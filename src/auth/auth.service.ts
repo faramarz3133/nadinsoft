@@ -32,7 +32,6 @@ export class AuthService {
             await this.userRepository.save(user);
         } catch(err) {
             if(err.code=='23505'){
-                console.log(err)
                 throw new ConflictException("User with this username, email, or phone number already exists.");
             } 
             else{
@@ -97,7 +96,16 @@ export class AuthService {
             user.phone = phone;
         }
 
-        await this.userRepository.save(user);
+        try{
+            await this.userRepository.save(user);
+        } catch(err) {
+            if(err.code=='23505'){
+                throw new ConflictException("User with this username, email, or phone number already exists.");
+            } 
+            else{
+                throw new InternalServerErrorException();
+            }
+        }
         return user;
     }
 
@@ -122,7 +130,16 @@ export class AuthService {
             user.phone = phone;
         }
 
-        await this.userRepository.save(user);
+        try{
+            await this.userRepository.save(user);
+        } catch(err) {
+            if(err.code=='23505'){
+                throw new ConflictException("User with this username, email, or phone number already exists.");
+            } 
+            else{
+                throw new InternalServerErrorException();
+            }
+        }
         return user;
     }
 
