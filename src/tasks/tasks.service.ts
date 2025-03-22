@@ -83,7 +83,12 @@ export class TasksService {
             task.description = description;
         }
 
-        await this.tasksRepository.save(task);
+        try{
+            await this.tasksRepository.save(task);
+        } catch{
+            throw new Error
+        }
+        
         return task;
     }
     
