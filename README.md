@@ -90,7 +90,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
--developer [Faramarz Aghajani] (https://www.linkedin.com/in/faramarz-aghajani-6546b7192/)
+-developer [Faramarz Aghajani](https://www.linkedin.com/in/faramarz-aghajani-6546b7192/)
 
 ## License
 
