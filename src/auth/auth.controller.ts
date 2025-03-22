@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query, Request, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query, Request, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { SignIn } from './dto/signin.dto';
@@ -86,6 +86,9 @@ export class AuthController {
         @UploadedFile() file,
         @GetUser() user:User,
     ): Promise<void>{
+        if(!file){
+            throw new BadRequestException('File is required');
+        }
         return this.authService.uploadimage(file,user);
     }
 
